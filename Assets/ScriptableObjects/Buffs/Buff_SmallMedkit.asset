@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7da1592ee354812910cd34ef275878, type: 3}
+  m_Name: Buff_SmallMedkit
+  m_EditorClassIdentifier: Assembly-CSharp::BuffDefinition
+  displayName: Small Medkit
+  description: Restores 30% max health instantly.
+  type: 0
+  icon: {fileID: 21300000, guid: 095b14989a3aa48488a4fab50d8605a2, type: 3}
+  duration: 0
+  multiplier: 0.3
+  secondaryMultiplier: 1
+  flatValue: 0
+  pickupColor: {r: 0.35, g: 1, b: 0.55, a: 1}
