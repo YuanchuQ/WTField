@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b04b8c3c2b73f4d1499cd59a971e2e53
+guid: be21d7e6a12047c8acfa04f460436013
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5825210932470538448
-    second: BuffIcon1_0
+      213: 8613258305402645100
+    second: BuffIcon13_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BuffIcon1_0
+      name: BuffIcon13_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2
-        width: 16
-        height: 9
+        x: 2
+        y: 0
+        width: 13
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 03f1f5c2581b82fa0800000000000000
-      internalID: -5825210932470538448
+      spriteID: be21d7e6a12047c80800000000000000
+      internalID: 8613258305402645100
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BuffIcon1_0: -5825210932470538448
+      BuffIcon13_0: 8613258305402645100
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
