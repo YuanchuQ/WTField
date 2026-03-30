@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: "\u706B\u7130\u69B4\u5F39"
   description: '8s: bullets explode on enemies or terrain.'
   type: 7
-  icon: {fileID: 21300000, guid: e17e8a7040c174ccebae42ae0f70f907, type: 3}
+  icon: {fileID: 21300000, guid: be21d7e6a12047c8acfa04f460436013, type: 3}
   duration: 8
   multiplier: 1
   secondaryMultiplier: 0.8
