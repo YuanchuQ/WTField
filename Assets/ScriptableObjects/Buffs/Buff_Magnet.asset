@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7da1592ee354812910cd34ef275878, type: 3}
+  m_Name: Buff_Magnet
+  m_EditorClassIdentifier: Assembly-CSharp::BuffDefinition
+  displayName: "\u78C1\u529B\u5149\u73AF"
+  description: '10s: pulls all pickups toward the player.'
+  type: 8
+  icon: {fileID: 21300000, guid: 2b8bc5874324d4a4e904e71e7efb9449, type: 3}
+  duration: 10
+  multiplier: 1
+  secondaryMultiplier: 1
+  flatValue: 0
+  pickupColor: {r: 0.9, g: 0.55, b: 1, a: 1}

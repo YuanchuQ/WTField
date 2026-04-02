@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7da1592ee354812910cd34ef275878, type: 3}
+  m_Name: Buff_FireRate
+  m_EditorClassIdentifier: Assembly-CSharp::BuffDefinition
+  displayName: "\u6025\u901F\u5F39\u5939"
+  description: '7s: weapon cooldown reduced by 40%.'
+  type: 4
+  icon: {fileID: 21300000, guid: 4427dfe3aa39c42099c5102413598ee6, type: 3}
+  duration: 7
+  multiplier: 1.67
+  secondaryMultiplier: 1
+  flatValue: 0
+  pickupColor: {r: 1, g: 0.9, b: 0.3, a: 1}

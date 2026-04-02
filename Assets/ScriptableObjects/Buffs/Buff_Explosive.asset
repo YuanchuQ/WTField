@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7da1592ee354812910cd34ef275878, type: 3}
+  m_Name: Buff_Explosive
+  m_EditorClassIdentifier: Assembly-CSharp::BuffDefinition
+  displayName: "\u706B\u7130\u69B4\u5F39"
+  description: '8s: bullets explode on enemies or terrain.'
+  type: 7
+  icon: {fileID: 21300000, guid: be21d7e6a12047c8acfa04f460436013, type: 3}
+  duration: 8
+  multiplier: 1
+  secondaryMultiplier: 0.8
+  flatValue: 1
+  pickupColor: {r: 1, g: 0.45, b: 0.2, a: 1}
