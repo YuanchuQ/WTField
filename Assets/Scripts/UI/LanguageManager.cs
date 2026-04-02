@@ -1,40 +1,29 @@
-// 管理中英文 UI 文本和界面字体
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// 提供全局语言切换和本地化查询
 public class LanguageManager : MonoBehaviour
 {
-    // 当前场景中的语言管理器
     public static LanguageManager Instance { get; private set; }
 
-    // 默认界面语言
-    [SerializeField] private DemoLanguage currentLanguage = DemoLanguage.Chinese;
-    // 中文 UI 使用的字体
+    [SerializeField] private GameLanguage currentLanguage = GameLanguage.Chinese;
     [SerializeField] private Font chineseFont;
-    // 英文 UI 使用的字体
     [SerializeField] private Font englishFont;
 
-    // 界面语言变化事件
     public event Action LanguageChanged;
 
-    // 当前界面语言
-    public DemoLanguage CurrentLanguage => currentLanguage;
-    // 当前语言应使用的字体
-    public Font CurrentFont => currentLanguage == DemoLanguage.Chinese ? chineseFont : englishFont;
+    public GameLanguage CurrentLanguage => currentLanguage;
+    public Font CurrentFont => currentLanguage == GameLanguage.Chinese ? chineseFont : englishFont;
 
-    // 获取指定文本键应使用的字体
     public Font GetFont(LocalizedTextKey key)
     {
-        if (key == LocalizedTextKey.LanguageToggle && currentLanguage == DemoLanguage.English)
+        if (key == LocalizedTextKey.LanguageToggle && currentLanguage == GameLanguage.English)
             return chineseFont != null ? chineseFont : CurrentFont;
 
         return CurrentFont;
     }
 
-    // UI 固定文本字典
     private static readonly Dictionary<LocalizedTextKey, LocalizedPair> Texts = new Dictionary<LocalizedTextKey, LocalizedPair>
     {
         { LocalizedTextKey.Title, new LocalizedPair("明日方舟:肿么滴", "ARKNIGHTS: WHAT'S UP") },
@@ -51,7 +40,6 @@ public class LanguageManager : MonoBehaviour
         { LocalizedTextKey.Ready, new LocalizedPair("准备", "Ready") }
     };
 
-    // Buff 名称字典
     private static readonly Dictionary<BuffType, LocalizedPair> BuffNames = new Dictionary<BuffType, LocalizedPair>
     {
         { BuffType.HealPercent, new LocalizedPair("小型医疗包", "Small Medkit") },
@@ -65,7 +53,6 @@ public class LanguageManager : MonoBehaviour
         { BuffType.Magnet, new LocalizedPair("磁力光环", "Magnet Aura") }
     };
 
-    // 波次名称字典
     private static readonly Dictionary<string, LocalizedPair> WaveNames = new Dictionary<string, LocalizedPair>
     {
         { "Opening Patrol", new LocalizedPair("开场巡逻", "Opening Patrol") },
@@ -73,7 +60,6 @@ public class LanguageManager : MonoBehaviour
         { "Elite Push", new LocalizedPair("精英压制", "Elite Push") }
     };
 
-    // 初始化全局实例和默认中文
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -83,35 +69,21 @@ public class LanguageManager : MonoBehaviour
         }
 
         Instance = this;
-        currentLanguage = DemoLanguage.Chinese;
+        currentLanguage = GameLanguage.Chinese;
         ApplyFontToExistingText();
     }
 
-    // 场景启用后刷新所有本地化文本
     private void Start()
     {
         NotifyLanguageChanged();
     }
 
-    // 由构建器注入中英文字体
-    public void Configure(Font zhFont, Font enFont, DemoLanguage defaultLanguage = DemoLanguage.Chinese)
-    {
-        if (Instance == null)
-            Instance = this;
-
-        chineseFont = zhFont;
-        englishFont = enFont != null ? enFont : zhFont;
-        currentLanguage = defaultLanguage;
-    }
-
-    // 切换中英文界面
     public void ToggleLanguage()
     {
-        SetLanguage(currentLanguage == DemoLanguage.Chinese ? DemoLanguage.English : DemoLanguage.Chinese);
+        SetLanguage(currentLanguage == GameLanguage.Chinese ? GameLanguage.English : GameLanguage.Chinese);
     }
 
-    // 设置当前界面语言
-    public void SetLanguage(DemoLanguage language)
+    public void SetLanguage(GameLanguage language)
     {
         if (currentLanguage == language)
         {
@@ -123,19 +95,16 @@ public class LanguageManager : MonoBehaviour
         NotifyLanguageChanged();
     }
 
-    // 获取固定文本
     public string GetText(LocalizedTextKey key)
     {
         return Texts.TryGetValue(key, out LocalizedPair pair) ? pair.Get(currentLanguage) : key.ToString();
     }
 
-    // 获取 Buff 显示名称
     public string GetBuffName(BuffType type, string fallback)
     {
         return BuffNames.TryGetValue(type, out LocalizedPair pair) ? pair.Get(currentLanguage) : fallback;
     }
 
-    // 获取波次显示名称
     public string GetWaveName(string fallback)
     {
         if (fallback == "Ready" || fallback == "准备")
@@ -144,34 +113,29 @@ public class LanguageManager : MonoBehaviour
         return WaveNames.TryGetValue(fallback, out LocalizedPair pair) ? pair.Get(currentLanguage) : fallback;
     }
 
-    // 格式化波次文本
     public string FormatWave(int index, int total, string label)
     {
         string waveName = GetWaveName(label);
-        return currentLanguage == DemoLanguage.Chinese
+        return currentLanguage == GameLanguage.Chinese
             ? $"波次 {index}/{total}  {waveName}"
             : $"Wave {index}/{total}  {waveName}";
     }
 
-    // 格式化敌人数量文本
     public string FormatEnemies(int count)
     {
-        return currentLanguage == DemoLanguage.Chinese ? $"敌人 {count}" : $"Enemies {count}";
+        return currentLanguage == GameLanguage.Chinese ? $"敌人 {count}" : $"Enemies {count}";
     }
 
-    // 获取空 Buff 文本
     public string GetNoBuffText()
     {
-        return currentLanguage == DemoLanguage.Chinese ? "无增益" : "No Buff";
+        return currentLanguage == GameLanguage.Chinese ? "无增益" : "No Buff";
     }
 
-    // 获取秒数后缀
     public string GetSecondsSuffix()
     {
-        return currentLanguage == DemoLanguage.Chinese ? "秒" : "s";
+        return currentLanguage == GameLanguage.Chinese ? "秒" : "s";
     }
 
-    // 通知所有 UI 语言已变化
     private void NotifyLanguageChanged()
     {
         if (Instance == null)
@@ -184,7 +148,6 @@ public class LanguageManager : MonoBehaviour
         RefreshAllGameManagers();
     }
 
-    // 给场景中现有 Text 应用当前字体
     private void ApplyFontToExistingText()
     {
         Font font = CurrentFont;
@@ -196,7 +159,6 @@ public class LanguageManager : MonoBehaviour
             text.font = font;
     }
 
-    // 主动刷新所有本地化文本
     private void RefreshAllLocalizedText()
     {
         LocalizedText[] texts = FindObjectsByType<LocalizedText>(FindObjectsInactive.Include, FindObjectsSortMode.None);
@@ -204,7 +166,6 @@ public class LanguageManager : MonoBehaviour
             text.Refresh();
     }
 
-    // 主动刷新所有 HUD 动态文本
     private void RefreshAllHud()
     {
         HUDController[] huds = FindObjectsByType<HUDController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
@@ -212,7 +173,6 @@ public class LanguageManager : MonoBehaviour
             hud.RefreshLanguage();
     }
 
-    // 主动刷新所有流程 UI 文本
     private void RefreshAllGameManagers()
     {
         GameManager[] managers = FindObjectsByType<GameManager>(FindObjectsInactive.Include, FindObjectsSortMode.None);
@@ -220,25 +180,20 @@ public class LanguageManager : MonoBehaviour
             manager.RefreshLanguage();
     }
 
-    // 保存一条中英文文本
     private readonly struct LocalizedPair
     {
-        // 中文文本
         private readonly string chinese;
-        // 英文文本
         private readonly string english;
 
-        // 创建中英文文本对
         public LocalizedPair(string zh, string en)
         {
             chinese = zh;
             english = en;
         }
 
-        // 按语言取出文本
-        public string Get(DemoLanguage language)
+        public string Get(GameLanguage language)
         {
-            return language == DemoLanguage.Chinese ? chinese : english;
+            return language == GameLanguage.Chinese ? chinese : english;
         }
     }
 }
